@@ -1,0 +1,82 @@
+The 3.0 Release consolidates all changes to Canoo WebTest since release 2.6 (see Change log)
+
+This is the recommended version of WebTest for beginners. Existing users are also encouraged to upgrade. 
+It offers many improvements over release 2.6 (bug fixes, speed improvements, better javascript support, ...)
+
+Contrary to earlier releases, release 3.0 requires Java 5.
+
+Warning: possible changes in XPath usage
+Starting with build 1700, the HtmlUnit version used by WebTest has been 
+upgraded to the latest 2.x release, which doesn't use Jaxen anymore for 
+XPath evaluation with a custom document navigator but standard DOM tools. 
+The consequence is that XPath expressions now have to be "fully correct" 
+and can't use shortcuts that were previously available. For example an 
+expression like "//tr[td='2.1']/td[3]" won't work anymore and should be 
+replaced with something like "//tr[td/text() = '2.1']/td[3]". 
+Additionally, spaces are no longer trimmed to respect XPath standards 
+(the function wt:cleanText can be used to ignore whitespaces).
+
+The release has the tag R_1758 in the repository.
+
+
+All tickets closed at the time of build R_1758 are:
+
+Release Notes - WebTest - Version 3.0
+
+
+Release Notes - WebTest - Version 3.0
+
+** Bug
+    * [WT-314] - Exception thrown on button click
+    * [WT-315] - clickLink Javascript error loading page
+    * [WT-362] - dataDriven does not import empty cells
+    * [WT-375] - Webtest does not seem to work with Rich Faces components
+    * [WT-377] - JavaScript  error ...TypeError: Cannot find function iterateNext
+    * [WT-380] - Selection of components with quotes and brackets fail
+    * [WT-397] - datadriven-not accepting numeric values
+    * [WT-413] - Problem creating output directories when running more than 1000 tests
+    * [WT-414] - Tests fail at startup when using -Dwt.parallel.nbWorkers=...
+    * [WT-424] - &nbsp; not handled properly in link labels
+    * [WT-426] - dataDriven excel cell with whole number is outputted with a decimal
+    * [WT-443] - XPath not working in release 1710
+    * [WT-461] - Webtest chokes on jQuery-1.2.3.pack.js
+    * [WT-465] - setInputField doesn't trigger onkeypress and onkeyup handlers
+    * [WT-468] - enabledJavaScript: paremeter "enable" should have default value "true"
+    * [WT-477] - Cross-population of step results and IllegalStateExceptions when running in multi-threaded mode with multiple <webtest> tasks in the same ant file
+    * [WT-478] - Misspelled word on website
+    * [WT-483] - Reopened - Problem running parallel tests and dynamic properties
+    * [WT-496] - Apostrophe's in <TITLE> element breaks webtest completely
+    * [WT-500] - HTML tags written in uppercase can't be found by XPath since upgrade to HtmlUnit-2.4
+    * [WT-503] - Class instantiation failure within groovy block of webtest
+    * [WT-510] - webtest called from Groovy should throw by default when test fails
+
+** New Feature
+    * [WT-367] - Mention XPather on the "Annotated References" on your website (more useful than XPath Explorer)
+    * [WT-415] - config option  for userInsecureSSL
+    * [WT-419] - Provide support for WebTests as Groovy test classes
+    * [WT-422] - selectWebClient: allow usage as step container
+    * [WT-425] - dataDriven excel cell with formula shows incorrect value
+    * [WT-466] - Enable customization of StepExecutionListener & WebClient
+    * [WT-474] - Add new steps mouseOver and mouseOut
+    * [WT-481] - Add config option to easily configure the browser to simulate
+    * [WT-482] - Capture JS exception in background tasks too
+    * [WT-501] - Allow Groovy test cases extending com.canoo.webtest.WebTestCase to be run directly from an IDE
+    * [WT-504] - WebTest groovy step should accept a closure as parameter when used in groovy
+    * [WT-506] - clickButton should be able to work without any attribute
+    * [WT-511] - dataDriven should allow to specify "fail ASAP" or "fail at the end"
+
+** Task
+    * [WT-410] - Upgrade to HtmlUnit 2.1
+    * [WT-411] - Upgrade to java 5
+    * [WT-412] - XPath: Migrate from Jaxen to DOM based XPath (Warning: may cause some XPath failures)
+    * [WT-416] - Upgrade to NekoHTML 1.9.7
+    * [WT-431] - Upgrade to Groovy 1.5.6
+    * [WT-435] - Upgrade to Apache POI 3.1-beta2
+    * [WT-438] - dataDriven: look at the cell style to convert cell value to string
+    * [WT-451] - Upgrade to htmlunit 2.2
+    * [WT-459] - multi-select box with double click selection
+    * [WT-480] - Upgrade to HtmlUnit-2.4
+    * [WT-485] - use latest R_1736 run test , show error "[taskdef] Could not load definitions from resource net/sf/antcontrib/antlib.xm l. It could not be found."
+    * [WT-502] - Upgrade to PDFBox 0.7.3
+    * [WT-507] - Upgrade to Groovy 1.6.0
+
